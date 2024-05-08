@@ -1,1 +1,16 @@
 cypress
+
+what is cypress
+javascript based automation testing
+
+used to create:
+end-to-end testing(E2E)-test application flows
+
+Component Tests-test ui elements
+
+end to end test user application flows 
+ex:
+user visits page >> enters text >> clicks button >> todo item added;
+user visits login page >> enters credentials >> submits form >> views dashboard;
+
+Unit testing
