@@ -1,0 +1,76 @@
+timeouts- By default each command that retries does so for up to 4 seconds - the defaultCommandTimeout setting.  
+
+can be adjusted through cypress.config.js to make a global effect
+
+but it is recommended that timeout changes should be done locally, 
+ex:
+
+describe("contact.." , {defaultCommandTimeout=10000}, () => {});
+
+
+cy.get('[data-testid="mobile-nav"]', { timeout: 10000 })
+  .should('be.visible')
+  .and('contain', 'Home')
+
+Running Specific Tests by Browser
+There may be instances where it can be useful to run or ignore one or more tests when in specific browsers. For example, test run duration can be reduced by only running smoke-tests against Chrome and not Firefox. This type of granular selection of test execution depends on the type of tests and the level of confidence those specific tests provide to the overall project.
+
+it('has access to clipboard', { browser: 'electron' }, () => {
+  ...
+})
+
+
+Best Practice: Set a baseUrl in your Cypress configuration.
+in cypress.config.js
+
+const { defineConfig } = require('cypress')
+
+module.exports = defineConfig({
+  e2e: {
+    baseUrl: 'http://localhost:8484',
+  },
+
+cy.visit('/'); //take you to home page
+
+
+Hooks
+
+before hooks are more common compared to after hooks, as they set up a successful environment for the test before they are implemented
+
+before(() => {
+  // root-level hook
+  // runs once before all tests
+})
+
+beforeEach(() => {
+  // root-level hook
+  // runs before every test block
+})
+
+afterEach(() => {
+  // runs after each test block
+})
+
+after(() => {
+  // runs once all tests are done
+})
+
+describe('Hooks', () => {
+  before(() => {
+    // runs once before all tests in the block
+  })
+
+  beforeEach(() => {
+    // runs before each test in the block
+  })
+
+  afterEach(() => {
+    // runs after each test in the block
+  })
+
+  after(() => {
+    // runs once after all tests in the block
+  })
+})
+
+commands vs queries
