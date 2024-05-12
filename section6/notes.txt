@@ -1,0 +1,2 @@
+stubs -replacement for functions or methods. Used for evaluating & controlling function calls
+
